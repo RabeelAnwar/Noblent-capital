@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Noblent Capital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg-primary:#1a2035;
+  --bg-secondary:#1e2a45;
+  --bg-card:#243050;
+  --bg-card2:#2a3660;
+  --bg-sidebar:#1a2035;
+  --nav-bg:#1e2848;
+  --accent:#4a7c6f;
+  --accent2:#5a9e8e;
+  --accent-light:#6dbfad;
+  --text:#e8eaf0;
+  --text-muted:#8a9bbf;
+  --text-dim:#6a7a9a;
+  --border:#2e3d5c;
+  --border2:#374870;
+  --green:#4caf82;
+  --green2:#6ecf9e;
+  --red:#e05555;
+  --red2:#f07070;
+  --gold:#c9a84c;
+  --btn-green:#4a7c6f;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg-primary);color:var(--text);min-height:100vh;}
+
+/* ====== LANDING PAGE ====== */
+#landing{display:block;}
+#landing.hidden{display:none;}
+
+.lp-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 3rem;background:var(--nav-bg);
+  border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;
+}
+.lp-logo{display:flex;align-items:center;gap:10px;}
+.lp-logo-box{
+  width:36px;height:36px;background:var(--bg-card2);border:1px solid var(--border2);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;color:var(--text);
+}
+.lp-logo-text{font-size:18px;font-weight:700;color:var(--text);}
+.lp-logo-text span{font-weight:300;}
+.lp-nav-links{display:flex;gap:2rem;align-items:center;}
+.lp-nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;transition:color 0.2s;}
+.lp-nav-links a:hover{color:var(--text);}
+.btn-login-nav{
+  background:var(--btn-green);color:#fff;border:none;
+  padding:9px 22px;border-radius:6px;font-size:14px;font-weight:500;cursor:pointer;
+  transition:background 0.2s;
+}
+.btn-login-nav:hover{background:var(--accent2);}
+
+.lp-hero{
+  padding:7rem 3rem 5rem;max-width:900px;margin:0 auto;text-align:center;
+}
+.lp-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(74,124,111,0.15);border:1px solid rgba(74,124,111,0.3);
+  color:var(--accent-light);padding:6px 16px;border-radius:20px;
+  font-size:12px;font-weight:500;margin-bottom:2rem;letter-spacing:0.5px;
+}
+.lp-hero h1{
+  font-size:56px;font-weight:700;line-height:1.1;margin-bottom:1.5rem;
+  color:var(--text);
+}
+.lp-hero h1 span{color:var(--accent-light);}
+.lp-hero p{font-size:17px;color:var(--text-muted);line-height:1.8;margin-bottom:3rem;max-width:620px;margin-left:auto;margin-right:auto;}
+.lp-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:5rem;}
+.btn-lp-primary{
+  background:var(--btn-green);color:#fff;border:none;
+  padding:13px 30px;border-radius:7px;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;
+}
+.btn-lp-primary:hover{background:var(--accent2);}
+.btn-lp-sec{
+  background:transparent;color:var(--text);border:1px solid var(--border2);
+  padding:13px 30px;border-radius:7px;font-size:15px;cursor:pointer;transition:all 0.2s;
+}
+.btn-lp-sec:hover{border-color:var(--accent-light);color:var(--accent-light);}
+
+.lp-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;
+  margin:0 3rem 4rem;
+}
+.lp-stat{background:var(--bg-card);padding:2rem;text-align:center;}
+.lp-stat-val{font-size:32px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.lp-stat-val.green{color:var(--green);}
+.lp-stat-label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;}
+
+.lp-services{padding:3rem;max-width:1100px;margin:0 auto;}
+.lp-section-title{font-size:30px;font-weight:700;margin-bottom:2rem;}
+.lp-section-title span{color:var(--accent-light);}
+.lp-services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.lp-service-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:10px;padding:1.5rem;transition:border-color 0.2s;
+}
+.lp-service-card:hover{border-color:var(--accent);}
+.svc-icon{
+  width:40px;height:40px;background:rgba(74,124,111,0.2);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  font-size:18px;
+}
+.lp-service-card h3{font-size:15px;font-weight:600;margin-bottom:8px;}
+.lp-service-card p{font-size:13px;color:var(--text-muted);line-height:1.6;}
+
+.lp-footer{
+  text-align:center;padding:2.5rem;border-top:1px solid var(--border);
+  color:var(--text-dim);font-size:12px;margin-top:4rem;
+}
+
+/* ====== LOGIN MODAL ====== */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.7);
+  display:none;align-items:center;justify-content:center;z-index:200;
+}
+.modal-overlay.active{display:flex;}
+.modal-box{
+  background:var(--bg-secondary);border:1px solid var(--border2);
+  border-radius:12px;padding:2.5rem;width:400px;max-width:95vw;
+}
+.modal-logo{display:flex;align-items:center;gap:10px;margin-bottom:2rem;}
+.modal-logo-box{
+  width:32px;height:32px;background:var(--bg-card2);border:1px solid var(--border2);
+  border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;
+}
+.modal-logo-text{font-size:16px;font-weight:700;}
+.modal-logo-text span{font-weight:300;}
+.modal-box h2{font-size:22px;font-weight:700;margin-bottom:6px;}
+.modal-box>p{font-size:13px;color:var(--text-muted);margin-bottom:1.8rem;}
+.m-field{margin-bottom:1rem;}
+.m-field label{display:block;font-size:12px;color:var(--text-muted);margin-bottom:6px;font-weight:500;}
+.m-field input{
+  width:100%;background:var(--bg-card);border:1px solid var(--border2);
+  color:var(--text);padding:10px 14px;border-radius:7px;font-size:14px;font-family:'Inter',sans-serif;
+}
+.m-field input:focus{outline:none;border-color:var(--accent-light);}
+.m-hint{
+  background:rgba(74,124,111,0.1);border:1px solid rgba(74,124,111,0.2);
+  border-radius:7px;padding:10px 14px;font-size:12px;color:var(--text-muted);
+  margin-bottom:1.2rem;line-height:1.8;
+}
+.m-hint strong{color:var(--accent-light);}
+.m-error{font-size:12px;color:var(--red2);margin-bottom:10px;display:none;}
+.btn-m-submit{
+  width:100%;background:var(--btn-green);color:#fff;border:none;
+  padding:12px;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer;
+  margin-bottom:10px;transition:background 0.2s;
+}
+.btn-m-submit:hover{background:var(--accent2);}
+.btn-m-cancel{
+  width:100%;background:transparent;border:none;color:var(--text-muted);
+  font-size:13px;cursor:pointer;padding:6px;
+}
+
+/* ====== SHARED LAYOUT ====== */
+#app{display:none;}
+#app.active{display:flex;flex-direction:column;min-height:100vh;}
+
+.top-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--nav-bg);border-bottom:1px solid var(--border);
+  padding:0 1.5rem;height:56px;position:sticky;top:0;z-index:100;flex-shrink:0;
+}
+.nav-left{display:flex;align-items:center;gap:12px;}
+.nav-logo-box{
+  width:32px;height:32px;background:var(--bg-card2);border:1px solid var(--border2);
+  border-radius:5px;display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;
+}
+.nav-logo-text{font-size:16px;font-weight:700;}
+.nav-logo-text span{font-weight:300;}
+.nav-panel-tag{
+  font-size:11px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;
+  background:var(--bg-card);border:1px solid var(--border);padding:3px 10px;border-radius:4px;
+}
+.nav-links{display:flex;gap:0.2rem;}
+.nav-link{
+  color:var(--text-muted);text-decoration:none;font-size:13px;padding:6px 14px;
+  border-radius:5px;transition:all 0.2s;cursor:pointer;background:none;border:none;
+}
+.nav-link:hover,.nav-link.active{background:var(--bg-card);color:var(--text);}
+.nav-link.active{font-weight:500;}
+.btn-nav-logout{
+  background:transparent;border:1px solid var(--border);color:var(--text-muted);
+  padding:6px 14px;border-radius:5px;font-size:13px;cursor:pointer;transition:all 0.2s;
+}
+.btn-nav-logout:hover{border-color:var(--red2);color:var(--red2);}
+
+.layout{display:flex;flex:1;}
+.sidebar{
+  width:200px;background:var(--bg-sidebar);border-right:1px solid var(--border);
+  padding:1.5rem 0;flex-shrink:0;
+}
+.sidebar-item{
+  display:flex;align-items:center;gap:10px;padding:10px 1.5rem;
+  color:var(--text-muted);font-size:13px;cursor:pointer;transition:all 0.2s;
+  border-left:3px solid transparent;
+}
+.sidebar-item:hover{background:var(--bg-card);color:var(--text);}
+.sidebar-item.active{background:rgba(74,124,111,0.15);color:var(--text);border-left:3px solid var(--accent-light);}
+.sidebar-item svg{width:16px;height:16px;flex-shrink:0;}
+.sidebar-bottom{
+  position:absolute;bottom:0;width:200px;padding:1rem 1.5rem;
+  border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;
+}
+.s-avatar{
+  width:30px;height:30px;border-radius:50%;background:var(--btn-green);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;
+}
+.s-username{font-size:13px;font-weight:500;}
+
+.main-content{flex:1;overflow-y:auto;padding:2rem;}
+
+/* ====== DASHBOARD CARDS ====== */
+.stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:2rem;}
+.stat-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.3rem 1.5rem;
+}
+.stat-card-label{font-size:12px;color:var(--text-muted);font-weight:500;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;}
+.stat-card-val{font-size:28px;font-weight:700;color:var(--text);}
+.stat-card-val.green{color:var(--green);}
+.stat-card-val.red{color:var(--red2);}
+.stat-card-sub{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+/* ====== TABLES ====== */
+.section-title{font-size:16px;font-weight:600;margin-bottom:1rem;}
+.card-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.card-header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 1.3rem;border-bottom:1px solid var(--border);
+}
+.card-header h3{font-size:15px;font-weight:600;}
+.btn-green{
+  background:var(--btn-green);color:#fff;border:none;
+  padding:7px 16px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;
+  display:flex;align-items:center;gap:6px;transition:background 0.2s;
+}
+.btn-green:hover{background:var(--accent2);}
+.search-input{
+  width:100%;background:var(--bg-secondary);border:1px solid var(--border);
+  color:var(--text);padding:9px 14px 9px 36px;border-radius:7px;font-size:13px;
+  font-family:'Inter',sans-serif;margin:1rem 1.3rem;width:calc(100% - 2.6rem);
+}
+.search-input:focus{outline:none;border-color:var(--accent);}
+.search-wrap{position:relative;padding:1rem 1.3rem 0;}
+.search-icon{position:absolute;left:26px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:14px;}
+
+table{width:100%;border-collapse:collapse;}
+th{
+  text-align:left;padding:10px 1.3rem;font-size:11px;color:var(--text-muted);
+  font-weight:500;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border);
+}
+td{padding:12px 1.3rem;font-size:13px;border-bottom:1px solid rgba(46,61,92,0.5);}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,0.02);}
+
+.badge-active{
+  background:rgba(76,175,130,0.15);color:var(--green2);
+  padding:3px 10px;border-radius:12px;font-size:11px;font-weight:500;
+}
+.btn-view{
+  background:var(--btn-green);color:#fff;border:none;padding:5px 14px;
+  border-radius:5px;font-size:12px;cursor:pointer;margin-right:6px;
+}
+.btn-edit{
+  background:transparent;border:1px solid var(--border2);color:var(--text-muted);
+  padding:5px 10px;border-radius:5px;font-size:12px;cursor:pointer;
+}
+.td-name{font-weight:500;}
+.td-email{font-size:12px;color:var(--text-muted);}
+
+.pagination{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.8rem 1.3rem;border-top:1px solid var(--border);font-size:12px;color:var(--text-muted);
+}
+.pg-btns{display:flex;gap:4px;}
+.pg-btn{
+  background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-muted);
+  width:28px;height:28px;border-radius:4px;font-size:12px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.pg-btn.active{background:var(--btn-green);color:#fff;border-color:var(--btn-green);}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+
+/* Reports & Docs list */
+.file-list{padding:0.5rem 0;}
+.file-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 1.3rem;border-bottom:1px solid rgba(46,61,92,0.4);
+}
+.file-item:last-child{border-bottom:none;}
+.file-name{font-size:13px;font-weight:500;}
+.file-date{font-size:12px;color:var(--text-muted);}
+.file-info{display:flex;align-items:center;gap:8px;}
+.file-dot{width:8px;height:8px;border-radius:50%;background:var(--text-dim);flex-shrink:0;}
+.btn-dl{
+  background:transparent;border:1px solid var(--border2);color:var(--text-muted);
+  width:28px;height:28px;border-radius:5px;cursor:pointer;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.btn-dl:hover{border-color:var(--accent);color:var(--accent-light);}
+
+/* Performance updates */
+.perf-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 1.3rem;border-bottom:1px solid rgba(46,61,92,0.4);font-size:13px;
+}
+.perf-row:last-child{border-bottom:none;}
+.perf-val{font-weight:600;color:var(--text-muted);}
+.perf-pct.pos{color:var(--green2);}
+.perf-pct.neg{color:var(--red2);}
+
+/* ====== ADD INVESTOR FORM ====== */
+.form-section{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:1.5rem;
+}
+.form-section-title{font-size:15px;font-weight:600;margin-bottom:1.3rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border);}
+.form-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-field{display:flex;flex-direction:column;gap:6px;}
+.form-field label{font-size:12px;color:var(--text-muted);font-weight:500;}
+.form-field input,.form-field select{
+  background:var(--bg-secondary);border:1px solid var(--border2);
+  color:var(--text);padding:9px 12px;border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;
+}
+.form-field input:focus,.form-field select:focus{outline:none;border-color:var(--accent-light);}
+.form-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238a9bbf'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;}
+.units-box{
+  background:var(--bg-secondary);border:1px solid var(--border2);
+  border-radius:7px;padding:12px;font-size:18px;font-weight:600;
+  color:var(--accent-light);margin-top:0.5rem;
+}
+.units-hint{font-size:12px;color:var(--text-muted);margin-top:0.5rem;}
+.units-hint span{color:var(--text-dim);}
+.btn-add-investor{
+  display:block;margin:0 auto;background:var(--btn-green);color:#fff;border:none;
+  padding:12px 40px;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;
+}
+.btn-add-investor:hover{background:var(--accent2);}
+
+/* ====== INVESTOR PORTAL DASHBOARD ====== */
+.inv-name-title{font-size:26px;font-weight:700;margin-bottom:1.5rem;}
+.inv-stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:1.5rem;}
+.inv-stat{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.4rem;}
+.inv-stat-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;}
+.inv-stat-main{font-size:24px;font-weight:700;color:var(--text);}
+.inv-stat-main.green{color:var(--green);}
+.inv-stat-main.blue{color:#6ab0e8;}
+.inv-stat-sub{font-size:12px;color:var(--text-muted);margin-top:4px;}
+.inv-stat-sub.green{color:var(--green2);}
+.view-update{
+  display:inline-block;background:var(--bg-secondary);border:1px solid var(--border2);
+  color:var(--text-muted);padding:3px 10px;border-radius:4px;font-size:11px;cursor:pointer;margin-left:10px;
+}
+
+.chart-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.3rem;}
+.chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+.chart-title{font-size:14px;font-weight:600;}
+.chart-tabs{display:flex;gap:4px;}
+.chart-tab{
+  background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-muted);
+  padding:4px 12px;border-radius:5px;font-size:12px;cursor:pointer;
+}
+.chart-tab.active{background:var(--btn-green);color:#fff;border-color:var(--btn-green);}
+
+.announcements-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.3rem;}
+.ann-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid rgba(46,61,92,0.4);font-size:13px;}
+.ann-item:last-child{border-bottom:none;}
+.ann-dot{width:8px;height:8px;border-radius:50%;background:var(--green2);margin-top:4px;flex-shrink:0;}
+
+.acct-info{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.3rem;}
+.acct-welcome{font-size:15px;font-weight:600;margin-bottom:6px;}
+.acct-email{font-size:13px;color:var(--text-muted);}
+.acct-status{font-size:12px;color:var(--text-muted);}
+.acct-status span{color:var(--green2);font-weight:500;}
+
+/* Sidebar relative wrapper */
+.sidebar-wrap{position:relative;}
+
+/* ====== PAGE VISIBILITY ====== */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ====== RESPONSIVE ====== */
+@media(max-width:900px){
+  .stat-cards,.inv-stat-cards{grid-template-columns:repeat(2,1fr);}
+  .two-col{grid-template-columns:1fr;}
+  .form-grid-3{grid-template-columns:1fr 1fr;}
+  .lp-stats{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .stat-cards,.inv-stat-cards{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .lp-stats{grid-template-columns:1fr;}
+  .lp-hero h1{font-size:34px;}
+  .form-grid-3,.form-grid-2{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LANDING PAGE ============ -->
+<div id="landing">
+  <nav class="lp-nav">
+    <div class="lp-logo">
+      <div class="lp-logo-box">N</div>
+      <div class="lp-logo-text">Noblent <span>Capital</span></div>
+    </div>
+    <div class="lp-nav-links">
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Performance</a>
+      <a href="#">Contact</a>
+      <button class="btn-login-nav" onclick="openLogin()">Investor Login</button>
+    </div>
+  </nav>
+
+  <div class="lp-hero">
+    <div class="lp-badge">&#9679; Trusted Investment Management</div>
+    <h1>Smart Capital,<br><span>Exceptional Returns</span></h1>
+    <p>Noblent Capital delivers institutional-grade portfolio management and investment strategies. Your wealth, grown with precision and transparency.</p>
+    <div class="lp-btns">
+      <button class="btn-lp-primary" onclick="openLogin()">Access Your Portfolio</button>
+      <button class="btn-lp-sec">Learn More</button>
+    </div>
+  </div>
+
+  <div class="lp-stats">
+    <div class="lp-stat">
+      <div class="lp-stat-val">PKR 82M+</div>
+      <div class="lp-stat-label">Assets Under Management</div>
+    </div>
+    <div class="lp-stat">
+      <div class="lp-stat-val green">+18.4%</div>
+      <div class="lp-stat-label">Avg Annual Return</div>
+    </div>
+    <div class="lp-stat">
+      <div class="lp-stat-val">120+</div>
+      <div class="lp-stat-label">Active Investors</div>
+    </div>
+    <div class="lp-stat">
+      <div class="lp-stat-val">PKR 1.48</div>
+      <div class="lp-stat-label">Current NAV Price</div>
+    </div>
+  </div>
+
+  <div class="lp-services">
+    <h2 class="lp-section-title">What We <span>Offer</span></h2>
+    <div class="lp-services-grid">
+      <div class="lp-service-card">
+        <div class="svc-icon">&#128200;</div>
+        <h3>Portfolio Management</h3>
+        <p>Customized portfolios aligned with your risk profile and long-term goals.</p>
+      </div>
+      <div class="lp-service-card">
+        <div class="svc-icon">&#128176;</div>
+        <h3>Equity Trading</h3>
+        <p>Active PSX and international equity strategies with proven track record.</p>
+      </div>
+      <div class="lp-service-card">
+        <div class="svc-icon">&#128196;</div>
+        <h3>Fixed Income</h3>
+        <p>Stable returns via bonds, sukuk, and T-bills for capital preservation.</p>
+      </div>
+      <div class="lp-service-card">
+        <div class="svc-icon">&#127959;</div>
+        <h3>Wealth Advisory</h3>
+        <p>Comprehensive financial planning for high-net-worth individuals.</p>
+      </div>
+    </div>
+  </div>
+  <div class="lp-footer">&copy; 2024 Noblent Capital. All rights reserved.</div>
+</div>
+
+<!-- ============ LOGIN MODAL ============ -->
+<div id="loginModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-logo">
+      <div class="modal-logo-box">N</div>
+      <div class="modal-logo-text">Noblent <span>Capital</span></div>
+    </div>
+    <h2>Welcome Back</h2>
+    <p>Sign in to access your investment portal</p>
+    <div class="m-field">
+      <label>EMAIL ADDRESS</label>
+      <input type="email" id="loginEmail" placeholder="Enter email address" onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <div class="m-field">
+      <label>PASSWORD</label>
+      <input type="password" id="loginPass" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <div class="m-hint">
+      <strong>Admin:</strong> admin@noblent.com / admin123<br>
+      <strong>Investor:</strong> ali.raza@email.com / pass123<br>
+      <strong>Investor:</strong> sara.khan@email.com / pass123
+    </div>
+    <div class="m-error" id="loginError">Invalid credentials. Please try again.</div>
+    <button class="btn-m-submit" onclick="doLogin()">Sign In</button>
+    <button class="btn-m-cancel" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div id="app">
+
+  <!-- TOP NAV -->
+  <div class="top-nav">
+    <div class="nav-left">
+      <div class="nav-logo-box">N</div>
+      <div class="nav-logo-text">Noblent <span>Capital</span></div>
+      <div class="nav-panel-tag" id="panelTag">ADMIN PANEL</div>
+    </div>
+    <div class="nav-links" id="topNavLinks">
+      <button class="nav-link active" onclick="showPage('dashboard',this)">Dashboard</button>
+      <button class="nav-link" onclick="showPage('reports',this)">Reports</button>
+      <button class="nav-link" onclick="showPage('documents',this)">Documents</button>
+      <button class="nav-link" onclick="showPage('myaccount',this)">My Account</button>
+    </div>
+    <button class="btn-nav-logout" onclick="doLogout()">Log Out</button>
+  </div>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <div class="sidebar-wrap" style="position:relative;">
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-item" id="sb-dashboard" onclick="showPage('dashboard',null,'sb-dashboard')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </div>
+        <div class="sidebar-item active" id="sb-investors" onclick="showPage('investors',null,'sb-investors')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Investors
+        </div>
+        <div class="sidebar-item" id="sb-reports" onclick="showPage('reports',null,'sb-reports')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+          Reports
+        </div>
+        <div class="sidebar-item" id="sb-documents" onclick="showPage('documents',null,'sb-documents')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          Documents
+        </div>
+        <div class="sidebar-item" id="sb-settings" onclick="showPage('settings',null,'sb-settings')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          Settings
+        </div>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;width:200px;padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;background:var(--bg-sidebar);">
+        <div class="s-avatar" id="sidebarAvatar">A</div>
+        <div class="s-username" id="sidebarName">Admin User</div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      <!-- ===== ADMIN DASHBOARD PAGE ===== -->
+      <div class="page active" id="page-dashboard">
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="stat-card-label">Total Investors</div>
+            <div class="stat-card-val">120</div>
+            <div class="stat-card-sub">Active accounts</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">NAV</div>
+            <div class="stat-card-val" style="font-size:20px;">PKR 82,450,000</div>
+            <div class="stat-card-sub">Total fund value</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">Monthly Performance</div>
+            <div class="stat-card-val green">+4.5%</div>
+            <div class="stat-card-sub">in April</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">Max Drawdown</div>
+            <div class="stat-card-val red">-12.3%</div>
+            <div class="stat-card-sub">&#9651; Risk alert</div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <!-- Investor Management -->
+          <div class="card-box">
+            <div class="card-header">
+              <h3>Investor Management</h3>
+              <button class="btn-green" onclick="showPage('add-investor',null,'sb-investors')">&#43; Add New Investor</button>
+            </div>
+            <div class="search-wrap" style="padding:1rem 1.3rem 0.5rem;position:relative;">
+              <span class="search-icon" style="top:50%;transform:translateY(-50%);left:26px;">&#128269;</span>
+              <input class="search-input" style="margin:0;padding-left:36px;" placeholder="Search Investors" id="investorSearch" oninput="filterInvestors()"/>
+            </div>
+            <table>
+              <thead><tr><th>Name &amp; Email</th><th>Account Status</th><th>Actions</th></tr></thead>
+              <tbody id="investorTableBody"></tbody>
+            </table>
+            <div class="pagination">
+              <span id="pgInfo">Showing 1 to 4 of 120 investors</span>
+              <div class="pg-btns">
+                <button class="pg-btn active">1</button>
+                <button class="pg-btn">2</button>
+                <button class="pg-btn">3</button>
+                <button class="pg-btn">4</button>
+                <button class="pg-btn">&#8250;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column -->
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <!-- Monthly Reports -->
+            <div class="card-box">
+              <div class="card-header">
+                <h3>Monthly Reports</h3>
+                <button class="btn-green">&#11015; Upload</button>
+              </div>
+              <div class="file-list">
+                <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">April 2024 Investor Update.pdf</div><div class="file-date">April 3, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+                <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">March 2024 Report.pdf</div><div class="file-date">March 4, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+                <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">February 2024 Review.pdf</div><div class="file-date">February 5, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+              </div>
+            </div>
+
+            <!-- Performance Updates -->
+            <div class="card-box">
+              <div class="card-header">
+                <h3>Performance Updates</h3>
+                <button class="btn-green">Update Performance</button>
+              </div>
+              <table>
+                <thead><tr><th>Period</th><th>NAV Date</th><th>Return</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td class="td-name">Q1 2024</td><td class="td-email">PKR 2,450,000</td><td class="perf-pct pos">+10.2%</td><td><button class="btn-dl">&#11015;</button></td></tr>
+                  <tr><td class="td-name">February 2024</td><td class="td-email">March 4, 2024</td><td class="perf-pct pos">+2.1%</td><td><button class="btn-dl">&#11015;</button></td></tr>
+                  <tr><td class="td-name">January 2024</td><td class="td-email">Feb 10, 2024</td><td class="perf-pct pos">+4.9%</td><td><button class="btn-dl">&#11015;</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Uploaded Documents -->
+            <div class="card-box">
+              <div class="card-header">
+                <h3>Uploaded Documents</h3>
+                <button class="btn-green">&#11015; Upload Document</button>
+              </div>
+              <div class="file-list">
+                <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">Investment Strategy.pdf</div><div class="file-date">Apr 2, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+                <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">Capital Agreement.pdf</div><div class="file-date">Mar 6, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+                <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">Risk Management Policy.pdf</div><div class="file-date">Feb 10, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+              </div>
+              <div style="padding:0.5rem 1.3rem;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);">Showing 1 to 3 of 3 documents &#8250;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== INVESTORS LIST PAGE ===== -->
+      <div class="page" id="page-investors">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+          <h2 style="font-size:22px;font-weight:700;">Investors</h2>
+          <button class="btn-green" onclick="showPage('add-investor',null,'sb-investors')">&#43; Add New Investor</button>
+        </div>
+        <div class="card-box">
+          <div class="search-wrap" style="padding:1rem 1.3rem 0.5rem;position:relative;">
+            <span style="position:absolute;left:26px;top:50%;transform:translateY(-50%);color:var(--text-dim);">&#128269;</span>
+            <input class="search-input" style="margin:0;padding-left:36px;" placeholder="Search Investors"/>
+          </div>
+          <table>
+            <thead><tr><th>Name &amp; Email</th><th>Capital</th><th>Units</th><th>NAV Entry</th><th>Account Status</th><th>Actions</th></tr></thead>
+            <tbody id="investorFullTable"></tbody>
+          </table>
+          <div class="pagination">
+            <span>Showing 1 to 4 of 120 investors</span>
+            <div class="pg-btns">
+              <button class="pg-btn active">1</button><button class="pg-btn">2</button><button class="pg-btn">3</button><button class="pg-btn">&#8250;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ADD INVESTOR PAGE ===== -->
+      <div class="page" id="page-add-investor">
+        <h2 style="font-size:22px;font-weight:700;margin-bottom:1.5rem;">Add New Investor</h2>
+        <div class="form-section">
+          <div class="form-section-title">Investor Details</div>
+          <div class="form-grid-3">
+            <div class="form-field"><label>Name</label><input type="text" placeholder="Enter investor's full name" id="f-name"/></div>
+            <div class="form-field"><label>Email Address</label><input type="email" placeholder="Enter email address" id="f-email"/></div>
+            <div class="form-field"><label>Status</label>
+              <select id="f-status"><option>Active</option><option>Inactive</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">Investment Details</div>
+          <div class="form-grid-2" style="margin-bottom:1rem;">
+            <div class="form-field"><label>Entry NAV Price</label><input type="number" value="1.00" id="f-nav" oninput="calcUnits()"/></div>
+            <div class="form-field"><label>Investment Amount</label><input type="number" value="100000" id="f-amount" oninput="calcUnits()"/></div>
+          </div>
+          <div class="form-grid-2" style="margin-bottom:1rem;">
+            <div class="form-field"><label>Allocation Date</label><input type="date" id="f-date"/></div>
+            <div class="form-field"><label>Units Allocated</label><input type="text" id="f-units-display" readonly style="color:var(--accent-light);font-weight:600;"/></div>
+          </div>
+          <div class="units-box" id="unitsBox">10,000 units</div>
+          <div class="units-hint">&#9679; Units are automatically calculated based on:<br><span>Investment Amount &divide; Entry NAV Price</span></div>
+        </div>
+        <button class="btn-add-investor" onclick="addInvestor()">Add Investor</button>
+      </div>
+
+      <!-- ===== INVESTOR PORTAL DASHBOARD ===== -->
+      <div class="page" id="page-investor-portal">
+        <div class="inv-name-title" id="portalName">Ali Raza</div>
+        <div class="inv-stat-cards">
+          <div class="inv-stat">
+            <div class="inv-stat-label">Initial Investment</div>
+            <div class="inv-stat-main" id="p-init">$100,000</div>
+            <div class="inv-stat-sub">Last Updated 10 Mar 2026 <span class="view-update">View update</span></div>
+          </div>
+          <div class="inv-stat">
+            <div class="inv-stat-label">Current NAV Price</div>
+            <div class="inv-stat-main blue" id="p-nav">$1.48</div>
+            <div class="inv-stat-sub">Per unit</div>
+          </div>
+          <div class="inv-stat">
+            <div class="inv-stat-label">Current Investment Value</div>
+            <div class="inv-stat-main" id="p-value">$148,000</div>
+            <div class="inv-stat-sub green" id="p-units">+48,000 units gain</div>
+          </div>
+          <div class="inv-stat">
+            <div class="inv-stat-label">Total Profit / Loss</div>
+            <div class="inv-stat-main green" id="p-pnl">+48%</div>
+            <div class="inv-stat-sub green" id="p-pnl-amt">+$48,000</div>
+          </div>
+        </div>
+
+        <div class="two-col" style="margin-bottom:16px;">
+          <div class="chart-card">
+            <div class="chart-header">
+              <div class="chart-title">Equity Curve</div>
+              <div class="chart-tabs">
+                <button class="chart-tab active" onclick="setEquityTab(this,'6m')">6M</button>
+                <button class="chart-tab" onclick="setEquityTab(this,'1y')">1Y</button>
+                <button class="chart-tab" onclick="setEquityTab(this,'all')">All</button>
+              </div>
+            </div>
+            <canvas id="equityChart" style="max-height:200px;"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-header">
+              <div class="chart-title">Monthly Returns</div>
+              <div style="font-size:12px;color:var(--text-muted);">Last 12 Months</div>
+            </div>
+            <canvas id="returnsChart" style="max-height:200px;"></canvas>
+          </div>
+        </div>
+
+        <div class="two-col" style="margin-bottom:16px;">
+          <div class="card-box">
+            <div class="card-header"><h3>Recent Reports</h3></div>
+            <div class="file-list">
+              <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">April 2024 Investor Update</div><div class="file-date">5 Apr, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+              <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">March 2024 Report</div><div class="file-date">4 Mar, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+              <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">February 2024 Review</div><div class="file-date">5 Feb, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+            </div>
+          </div>
+          <div class="card-box">
+            <div class="card-header"><h3>Documents</h3></div>
+            <div class="file-list">
+              <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">Investment Strategy: PDF</div><div class="file-date">2 Apr, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+              <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">Capital Agreement PDF</div><div class="file-date">6 Mar, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+              <div class="file-item"><div class="file-info"><div class="file-dot"></div><div><div class="file-name">Risk Management Policy</div><div class="file-date">10 Feb, 2024</div></div></div><button class="btn-dl">&#11015;</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="acct-info">
+            <div class="card-header" style="padding:0 0 0.8rem 0;border-bottom:1px solid var(--border);margin-bottom:0.8rem;"><h3>Account Info</h3></div>
+            <div class="acct-welcome" id="p-welcome">Welcome, Ali Raza</div>
+            <div class="acct-email" id="p-email">Email: ali.raza@email.com</div>
+            <div class="acct-status" style="margin-top:8px;">Membership Status: <span>Active</span></div>
+          </div>
+          <div class="announcements-card">
+            <div class="card-header" style="padding:0 0 0.8rem 0;border-bottom:1px solid var(--border);margin-bottom:0.8rem;"><h3>Announcements</h3></div>
+            <div class="ann-item"><div class="ann-dot"></div><span>Webinar: Market Outlook — May 5th</span></div>
+            <div class="ann-item"><div class="ann-dot"></div><span>Q1 Performance Summary Uploaded</span></div>
+            <div class="ann-item"><div class="ann-dot"></div><span>New document: Risk Management Policy</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== REPORTS PAGE ===== -->
+      <div class="page" id="page-reports">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+          <h2 style="font-size:22px;font-weight:700;">Reports</h2>
+          <button class="btn-green">&#43; Upload Report</button>
+        </div>
+        <div class="card-box">
+          <table>
+            <thead><tr><th>File Name</th><th>Date</th><th>Type</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td class="td-name">April 2024 Investor Update.pdf</td><td class="td-email">April 3, 2024</td><td><span class="badge-active">Monthly</span></td><td><button class="btn-dl">&#11015;</button></td></tr>
+              <tr><td class="td-name">March 2024 Report.pdf</td><td class="td-email">March 4, 2024</td><td><span class="badge-active">Monthly</span></td><td><button class="btn-dl">&#11015;</button></td></tr>
+              <tr><td class="td-name">Q1 2024 Summary.pdf</td><td class="td-email">April 1, 2024</td><td><span class="badge-active">Quarterly</span></td><td><button class="btn-dl">&#11015;</button></td></tr>
+              <tr><td class="td-name">February 2024 Review.pdf</td><td class="td-email">February 5, 2024</td><td><span class="badge-active">Monthly</span></td><td><button class="btn-dl">&#11015;</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== DOCUMENTS PAGE ===== -->
+      <div class="page" id="page-documents">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+          <h2 style="font-size:22px;font-weight:700;">Documents</h2>
+          <button class="btn-green">&#43; Upload Document</button>
+        </div>
+        <div class="card-box">
+          <table>
+            <thead><tr><th>Document Name</th><th>Date Uploaded</th><th>Visible To</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td class="td-name">Investment Strategy.pdf</td><td class="td-email">Apr 2, 2024</td><td>All Investors</td><td><button class="btn-dl">&#11015;</button></td></tr>
+              <tr><td class="td-name">Capital Agreement.pdf</td><td class="td-email">Mar 6, 2024</td><td>All Investors</td><td><button class="btn-dl">&#11015;</button></td></tr>
+              <tr><td class="td-name">Risk Management Policy.pdf</td><td class="td-email">Feb 10, 2024</td><td>All Investors</td><td><button class="btn-dl">&#11015;</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== MY ACCOUNT PAGE ===== -->
+      <div class="page" id="page-myaccount">
+        <h2 style="font-size:22px;font-weight:700;margin-bottom:1.5rem;">My Account</h2>
+        <div class="form-section" style="max-width:500px;">
+          <div class="form-section-title">Account Information</div>
+          <div class="form-field" style="margin-bottom:1rem;"><label>Full Name</label><input type="text" id="acc-name" value="Admin User"/></div>
+          <div class="form-field" style="margin-bottom:1rem;"><label>Email</label><input type="email" id="acc-email" value="admin@noblent.com"/></div>
+          <div class="form-field" style="margin-bottom:1.5rem;"><label>Role</label><input type="text" value="Administrator" readonly/></div>
+          <button class="btn-green" style="width:auto;">Save Changes</button>
+        </div>
+      </div>
+
+      <!-- ===== SETTINGS PAGE ===== -->
+      <div class="page" id="page-settings">
+        <h2 style="font-size:22px;font-weight:700;margin-bottom:1.5rem;">Settings</h2>
+        <div class="form-section" style="max-width:500px;">
+          <div class="form-section-title">Fund Settings</div>
+          <div class="form-field" style="margin-bottom:1rem;"><label>Current NAV Price (PKR)</label><input type="number" value="1.48"/></div>
+          <div class="form-field" style="margin-bottom:1rem;"><label>Fund Name</label><input type="text" value="Noblent Capital Fund"/></div>
+          <div class="form-field" style="margin-bottom:1.5rem;"><label>Base Currency</label><select><option>PKR</option><option>USD</option></select></div>
+          <button class="btn-green" style="width:auto;">Update Settings</button>
+        </div>
+      </div>
+
+    </div><!-- end main-content -->
+  </div><!-- end layout -->
+</div><!-- end #app -->
+
+<script>
+// ===== DATA =====
+const USERS = {
+  "admin@noblent.com": {
+    pass:"admin123", role:"admin", name:"Admin User", initials:"A"
+  },
+  "ali.raza@email.com": {
+    pass:"pass123", role:"investor", name:"Ali Raza", initials:"AR",
+    capital:100000, nav:1.48, units:100000, initNav:1.0,
+    email:"ali.raza@email.com"
+  },
+  "sara.khan@email.com": {
+    pass:"pass123", role:"investor", name:"Sara Khan", initials:"SK",
+    capital:88000, nav:1.48, units:88000, initNav:1.0,
+    email:"sara.khan@email.com"
+  }
+};
+
+const INVESTORS = [
+  {name:"Ali Raza",email:"ali.raza@email.com",capital:"$100,000",units:"100,000",nav:"$1.00",status:"Active"},
+  {name:"Sara Khan",email:"sara.khan@email.com",capital:"$88,000",units:"88,000",nav:"$1.00",status:"Active"},
+  {name:"Ahmed Butt",email:"ahmed.butt@email.com",capital:"$250,000",units:"250,000",nav:"$1.00",status:"Active"},
+  {name:"Zain Malik",email:"zain.malik@email.com",capital:"$55,000",units:"55,000",nav:"$1.00",status:"Active"},
+];
+
+let currentUser = null;
+let equityChartInst = null;
+let returnsChartInst = null;
+
+// ===== MODAL =====
+function openLogin(){ document.getElementById('loginModal').classList.add('active'); }
+function closeModal(){ document.getElementById('loginModal').classList.remove('active'); document.getElementById('loginError').style.display='none'; }
+
+function doLogin(){
+  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pass = document.getElementById('loginPass').value;
+  const user = USERS[email];
+  if(user && user.pass === pass){
+    currentUser = user;
+    closeModal();
+    document.getElementById('landing').classList.add('hidden');
+    document.getElementById('app').classList.add('active');
+    setupForUser();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
+}
+
+function doLogout(){
+  currentUser = null;
+  document.getElementById('app').classList.remove('active');
+  document.getElementById('landing').classList.remove('hidden');
+  if(equityChartInst){ equityChartInst.destroy(); equityChartInst=null; }
+  if(returnsChartInst){ returnsChartInst.destroy(); returnsChartInst=null; }
+}
+
+function setupForUser(){
+  document.getElementById('sidebarAvatar').textContent = currentUser.initials;
+  document.getElementById('sidebarName').textContent = currentUser.name;
+
+  if(currentUser.role === 'admin'){
+    document.getElementById('panelTag').textContent = 'ADMIN PANEL';
+    document.getElementById('sidebar').style.display = 'block';
+    renderInvestorTable();
+    renderInvestorFullTable();
+    showPage('dashboard', null, 'sb-dashboard');
+  } else {
+    document.getElementById('panelTag').textContent = 'INVESTOR PORTAL';
+    document.getElementById('sidebar').style.display = 'block';
+    // Hide admin-only sidebar items
+    document.getElementById('sb-investors').style.display = 'none';
+    document.getElementById('sb-settings').style.display = 'none';
+    setupInvestorPortal();
+    showPage('investor-portal', null, 'sb-dashboard');
+  }
+  calcUnits();
+  // Set today's date in form
+  const today = new Date().toISOString().split('T')[0];
+  const dateField = document.getElementById('f-date');
+  if(dateField) dateField.value = today;
+}
+
+// ===== PAGE ROUTING =====
+function showPage(pageId, navBtn, sidebarId){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + pageId);
+  if(target) target.classList.add('active');
+
+  if(navBtn){
+    document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+    navBtn.classList.add('active');
+  }
+  if(sidebarId){
+    document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+    const sb = document.getElementById(sidebarId);
+    if(sb) sb.classList.add('active');
+  }
+
+  if(pageId === 'investor-portal'){
+    setTimeout(()=>{ renderEquityChart(); renderReturnsChart(); }, 100);
+  }
+}
+
+// ===== INVESTOR TABLES =====
+function renderInvestorTable(){
+  const tbody = document.getElementById('investorTableBody');
+  if(!tbody) return;
+  tbody.innerHTML = INVESTORS.map(inv => `
+    <tr>
+      <td><div class="td-name">${inv.name}</div><div class="td-email">${inv.email}</div></td>
+      <td><span class="badge-active">${inv.status}</span></td>
+      <td>
+        <button class="btn-view" onclick="viewInvestor('${inv.email}')">View</button>
+        <button class="btn-edit">&#9998;</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function renderInvestorFullTable(){
+  const tbody = document.getElementById('investorFullTable');
+  if(!tbody) return;
+  tbody.innerHTML = INVESTORS.map(inv => `
+    <tr>
+      <td><div class="td-name">${inv.name}</div><div class="td-email">${inv.email}</div></td>
+      <td>${inv.capital}</td>
+      <td>${inv.units}</td>
+      <td>${inv.nav}</td>
+      <td><span class="badge-active">${inv.status}</span></td>
+      <td>
+        <button class="btn-view" onclick="viewInvestor('${inv.email}')">View</button>
+        <button class="btn-edit">&#9998;</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function filterInvestors(){
+  const q = document.getElementById('investorSearch').value.toLowerCase();
+  const rows = document.querySelectorAll('#investorTableBody tr');
+  rows.forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+function viewInvestor(email){
+  const u = USERS[email];
+  if(u && u.role === 'investor'){
+    currentUser = u;
+    setupInvestorPortal();
+    showPage('investor-portal', null, 'sb-dashboard');
+    document.getElementById('sb-investors').style.display = 'flex';
+  }
+}
+
+// ===== ADD INVESTOR =====
+function calcUnits(){
+  const nav = parseFloat(document.getElementById('f-nav')?.value) || 1;
+  const amt = parseFloat(document.getElementById('f-amount')?.value) || 0;
+  const units = nav > 0 ? Math.round(amt / nav) : 0;
+  const formatted = units.toLocaleString() + ' units';
+  const box = document.getElementById('unitsBox');
+  const display = document.getElementById('f-units-display');
+  if(box) box.textContent = formatted;
+  if(display) display.value = formatted;
+}
+
+function addInvestor(){
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  if(!name || !email){ alert('Please fill in Name and Email.'); return; }
+  const nav = parseFloat(document.getElementById('f-nav').value) || 1;
+  const amount = parseFloat(document.getElementById('f-amount').value) || 0;
+  const units = Math.round(amount / nav);
+  INVESTORS.unshift({name, email, capital:'$'+amount.toLocaleString(), units:units.toLocaleString(), nav:'$'+nav.toFixed(2), status:'Active'});
+  USERS[email.toLowerCase()] = {pass:'pass123', role:'investor', name, initials:name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase(), capital:amount, nav, units, initNav:nav, email};
+  alert(`Investor "${name}" added successfully!\nLogin: ${email} / pass123`);
+  document.getElementById('f-name').value='';
+  document.getElementById('f-email').value='';
+  document.getElementById('f-amount').value='100000';
+  document.getElementById('f-nav').value='1.00';
+  calcUnits();
+  renderInvestorTable();
+  renderInvestorFullTable();
+  showPage('investors', null, 'sb-investors');
+}
+
+// ===== INVESTOR PORTAL =====
+function setupInvestorPortal(){
+  const u = currentUser;
+  const currentVal = Math.round(u.units * u.nav);
+  const profit = currentVal - u.capital;
+  const pct = ((profit / u.capital)*100).toFixed(0);
+  document.getElementById('portalName').textContent = u.name;
+  document.getElementById('p-init').textContent = '$' + u.capital.toLocaleString();
+  document.getElementById('p-nav').textContent = '$' + u.nav.toFixed(2);
+  document.getElementById('p-value').textContent = '$' + currentVal.toLocaleString();
+  document.getElementById('p-units').textContent = '+' + u.units.toLocaleString() + ' units';
+  document.getElementById('p-pnl').textContent = (profit>=0?'+':'')+pct+'%';
+  document.getElementById('p-pnl-amt').textContent = (profit>=0?'+':'')+' $'+Math.abs(profit).toLocaleString();
+  document.getElementById('p-welcome').textContent = 'Welcome, ' + u.name;
+  document.getElementById('p-email').textContent = 'Email: ' + u.email;
+}
+
+// ===== CHARTS =====
+function renderEquityChart(){
+  const ctx = document.getElementById('equityChart');
+  if(!ctx) return;
+  if(equityChartInst){ equityChartInst.destroy(); }
+  const labels = ['May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Mar'];
+  const base = currentUser.capital || 100000;
+  const data = labels.map((_,i) => Math.round(base * (1 + 0.03*i + Math.sin(i)*0.01)));
+  equityChartInst = new Chart(ctx, {
+    type:'line',
+    data:{labels, datasets:[{data, borderColor:'#4caf82', backgroundColor:'rgba(76,175,130,0.08)', borderWidth:1.5, pointRadius:2, fill:true, tension:0.4}]},
+    options:{
+      responsive:true,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>' PKR '+c.raw.toLocaleString()}}},
+      scales:{
+        x:{grid:{color:'rgba(46,61,92,0.6)'}, ticks:{color:'#8a9bbf',font:{size:10}}},
+        y:{grid:{color:'rgba(46,61,92,0.6)'}, ticks:{color:'#8a9bbf',font:{size:10}, callback:v=>(v/1000).toFixed(0)+'k'}}
+      }
+    }
+  });
+}
+
+function renderReturnsChart(){
+  const ctx = document.getElementById('returnsChart');
+  if(!ctx) return;
+  if(returnsChartInst){ returnsChartInst.destroy(); }
+  const labels = ['M','J','J','A','S','O','N','D','J','F','M'];
+  const data = [2.1,-3.2,6.5,1.8,-1.5,2.9,0.8,-2.1,4.3,1.2,3.8];
+  returnsChartInst = new Chart(ctx, {
+    type:'bar',
+    data:{labels, datasets:[{data, backgroundColor:data.map(v=>v>=0?'rgba(76,175,130,0.7)':'rgba(224,85,85,0.7)'), borderRadius:2}]},
+    options:{
+      responsive:true,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{grid:{color:'rgba(46,61,92,0.6)'}, ticks:{color:'#8a9bbf',font:{size:10}}},
+        y:{grid:{color:'rgba(46,61,92,0.6)'}, ticks:{color:'#8a9bbf',font:{size:10}, callback:v=>v+'%'}}
+      }
+    }
+  });
+}
+
+function setEquityTab(btn, range){
+  document.querySelectorAll('.chart-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderEquityChart();
+}
+
+// Init
+calcUnits();
+</script>
+</body>
+</html>
